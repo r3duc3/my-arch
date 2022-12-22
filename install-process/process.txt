@@ -1,0 +1,65 @@
+# connect to internet
+
+# update system clock
+timedatectl set-timezone Asia/Jakarta
+
+# partition disk
+fdisk /dev/sdX
+: /dev/sdX1 150M efi /boot/efi
+: /dev/sdX2 bruh ext4 /
+
+mkfs.ext4 /dev/sdX2
+mkfs.fat -F 32 /dev/sdX1
+
+mount /dev/sdX2 /mnt
+mount --mkdir /dev/sdX1 /mnt/boot/efi
+
+# installation
+pacman -Sy archlinux-keyring
+reflector -f 12 -n 12 -l 10 --verbose --save /etc/pacman.d/mirrorlist
+pacstrap /mnt base base-devel linux linux-firmware linux-headers alsa-utils bzip2 coreutils cpupower dialog dosfstools e2fsprogs file filesystem findutils gawk gcc-libs gettext glibc grep grub efibootmgr gvfs gvfs-mtp gvfs-smb gzip inetutils intel-ucode iproute2 iputils licenses lvm2 man-db man-pages networkmanager network-manager-applet nm-connection-editor usb_modeswitch mobile-broadband-provider-info rp-pppoe ntfs-3g pavucontrol pciutils pipewire procps-ng psmisc pulseaudio pulseaudio-alsa sed shadow sudo dmenu sxhkd systemd systemd-sysvcompat tar texinfo ttf-dejavu unzip util-linux vim wget wireless_tools wpa_supplicant xdg-user-dirs xf86-input-synaptics xf86-video-fbdev xf86-video-intel xorg-apps xorg-server xorg-xinit xz light firefox feh git xfce-polkit xfce4-clipman-plugin
+
+# configure system
+
+genfstab -U /mnt >> /mnt/etc/fstab
+
+# chroot
+arch-chroot /mnt
+
+# timezone
+timedatectl set-timezone Asia/Jakarta
+ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+hwclock --systohc
+
+# localization
+vim /etc/locale.gen
+locale-gen
+
+# network configuration
+echo 'myhostname' > /etc/hostname
+vim /etc/hosts
+127.0.0.1				localhost myhostname
+::1							localhost ip6-localhost ip6-loopback
+ff02::1					ip6-allnodes
+ff02::2					ip6-allrouters
+
+# root password
+passwd
+
+# bootloader
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUBNAME
+grub-mkconfig -o /boot/grub/grub.cfg
+# edit grub
+vim /etc/default/grub
+
+
+# add user
+useradd -m thuser
+passwd thuser
+usermod -aG wheel,audio,video,storage thuser
+EDITOR=vim visudo
+
+# enable service
+systemctl enable NetworkManager.service
+
+# reboot banh
