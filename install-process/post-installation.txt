@@ -9,6 +9,7 @@ otf-font-awesome
 
 #aur
 https://aur.archlinux.org/ttf-ms-fonts.git
+ksuperkey
 
 # package
 aria2
