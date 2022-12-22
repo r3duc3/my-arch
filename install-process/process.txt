@@ -17,7 +17,7 @@ mount --mkdir /dev/sdX1 /mnt/boot/efi
 # installation
 pacman -Sy archlinux-keyring
 reflector -f 12 -n 12 -l 10 --verbose --save /etc/pacman.d/mirrorlist
-pacstrap /mnt base base-devel linux linux-firmware linux-headers alsa-utils bzip2 coreutils cpupower dialog dosfstools e2fsprogs file filesystem findutils gawk gcc-libs gettext glibc grep grub efibootmgr gvfs gvfs-mtp gvfs-smb gzip inetutils intel-ucode iproute2 iputils licenses lvm2 man-db man-pages networkmanager network-manager-applet nm-connection-editor usb_modeswitch mobile-broadband-provider-info rp-pppoe ntfs-3g pavucontrol pciutils pipewire procps-ng psmisc pulseaudio pulseaudio-alsa sed shadow sudo dmenu sxhkd systemd systemd-sysvcompat tar texinfo ttf-dejavu unzip util-linux vim wget wireless_tools wpa_supplicant xdg-user-dirs xf86-input-synaptics xf86-video-fbdev xf86-video-intel xorg-apps xorg-server xorg-xinit xz light firefox feh git xfce-polkit xfce4-clipman-plugin
+pacstrap /mnt base base-devel linux linux-firmware linux-headers alsa-utils bzip2 coreutils cpupower dialog dosfstools e2fsprogs file filesystem findutils gawk gcc-libs gettext glibc grep grub efibootmgr gvfs gvfs-mtp gvfs-smb gzip inetutils intel-ucode iproute2 iputils licenses lvm2 man-db man-pages networkmanager network-manager-applet nm-connection-editor usb_modeswitch mobile-broadband-provider-info rp-pppoe ntfs-3g pavucontrol pciutils pipewire procps-ng psmisc pulseaudio pulseaudio-alsa sed shadow sudo dmenu sxhkd systemd systemd-sysvcompat tar texinfo ttf-dejavu unzip util-linux vim wget wireless_tools wpa_supplicant xdg-user-dirs xf86-input-synaptics xf86-video-fbdev xf86-video-intel xorg-apps xorg-server xorg-xinit xz light firefox feh git xfce-polkit xfce4-clipman-plugin gpick
 
 # configure system
 
