@@ -1,6 +1,9 @@
 # window manager
 git://git.suckless.org/dwm
 
+# natural scrolling
+/etc/X11/xorg.conf.d/
+
 # notification manager
 https://dunst-project.org/
 
