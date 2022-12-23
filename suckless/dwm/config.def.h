@@ -69,7 +69,7 @@ static const char *editcmd[]		=	{ "gedit", NULL };
 static const char *webcmd[]			=	{ "firefox", NULL };
 
 /* rofi */
-static const char *rofi_launcher[]	= { "~/.config/dwm/rofi/launcher", NULL };
+static const char *rofi_launcher[]	= { "/usr/share/dwm/rofi/launcher", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        	function        argument */
