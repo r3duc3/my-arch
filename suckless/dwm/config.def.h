@@ -60,6 +60,7 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
+static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 
 /* Default apps */
 static const char *termcmd[]  	= { "st", NULL };
