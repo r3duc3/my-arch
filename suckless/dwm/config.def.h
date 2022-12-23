@@ -29,7 +29,7 @@ static const Rule rules[] = {
 	/* class      		instance    title       tags mask     isfloating   	monitor */
 	{ "st-float",			NULL,				NULL,				0,						1,						-1 },
 	{ "st-256color",	NULL,				NULL,				1 << 0,				0,						-1 },
-	{ "firefox",			NULL,				NULL,				1 << 1,				0,						-1 },
+	{ "Firefox",			NULL,				NULL,				1 << 1,				0,						-1 },
 	{ "Pcmanfm",			NULL,				NULL,				1 << 2,				0,						-1 },
 	{ "code-oss",			NULL,				NULL,				1 << 3,				0,						-1 },
 };
@@ -64,14 +64,19 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 
 /* Default apps */
-static const char *termcmd[]  	= { "st", NULL };
-static const char *termfloat[]  = { "st", "-c", "st-float", "-n", "st-float", "-g", "85x25+550x300" , NULL };
-static const char *fmcmd[]			= { "pcmanfm", NULL };
-static const char *editcmd[]		=	{ "gedit", NULL };
-static const char *webcmd[]			=	{ "firefox", NULL };
+static const char *termcmd[]       = { "st", NULL };
+static const char *termfloat[]     = { "st", "-c", "st-float", "-n", "st-float", "-g", "85x25+550x300" , NULL };
+static const char *fmcmd[]         = { "pcmanfm", NULL };
+static const char *editcmd[]       = { "gedit", NULL };
+static const char *webcmd[]        = { "firefox", NULL };
 
 /* rofi */
-static const char *rofi_launcher[]	= { "/usr/share/dwm/rofi/launcher", NULL };
+static const char *rofi_launcher[] = { "/usr/share/suckless/dwm/rofi/launcher", NULL };
+
+/* Hardware keys */
+#include <X11/XF86keysym.h>
+
+
 
 static const Key keys[] = {
 	/* modifier                     key        	function        argument */
