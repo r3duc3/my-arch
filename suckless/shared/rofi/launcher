@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+rofi \
+	-show drun \
+	-scroll-method 1 \
+	-no-lazy-grab \
+	-markup
