@@ -27,11 +27,11 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      		instance    title       tags mask     isfloating   	monitor */
-	{ "st-256color",	NULL,				"st",				1 << 0,				0,						-1 },
+	{ "st-float",			NULL,				NULL,				0,						1,						-1 },
+	{ "st-256color",	NULL,				NULL,				1 << 0,				0,						-1 },
 	{ "Firefox",			NULL,				NULL,				1 << 1,				0,						-1 },
 	{ "Pcmanfm",			NULL,				NULL,				1 << 2,				0,						-1 },
 	{ "code-oss",			NULL,				NULL,				1 << 3,				0,						-1 },
-	{ "st-256color",	NULL,				"stfloat",	1,						1,						-1 },
 };
 
 /* layout(s) */
@@ -63,7 +63,7 @@ static const Layout layouts[] = {
 
 /* Default apps */
 static const char *termcmd[]  	= { "st", NULL };
-static const char *termfloat[]  = { "st", "-T", "stfloat", "-g", "85x25+550x300" , NULL };
+static const char *termfloat[]  = { "st", "-c", "st-float", "-n", "st-float", "-g", "85x25+550x300" , NULL };
 static const char *fmcmd[]			= { "pcmanfm", NULL };
 static const char *editcmd[]		=	{ "gedit", NULL };
 static const char *webcmd[]			=	{ "firefox", NULL };
