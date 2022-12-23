@@ -5,4 +5,5 @@ rofi \
 	-scroll-method 1 \
 	-no-lazy-grab \
 	-markup \
-	-show-icons
+	-show-icons \
+	-kb-cancel Alt-F1
