@@ -171,6 +171,7 @@ main(void)
 	char *status;
 	char *baty;
 	char *ltime;
+	char *ssid;
 
 	if (!(dpy = XOpenDisplay(NULL))) {
 		fprintf(stderr, "dwmstatus: cannot open display.\n");
@@ -180,13 +181,18 @@ main(void)
 	for (;;sleep(1)) {
 		baty = getbattery();
 		ltime = mktimes();
+		ssid = execscript("nmcli -t -f STATE,CONNECTION device status | grep '^connected:' | sed 's/connected\\://'");
 
-		status = smprintf("B:%s %s", baty, ltime);
+		if (strlen(ssid) == 0)
+			ssid = "dc";
+
+		status = smprintf("B:%s W:%s %s", baty, ssid, ltime);
 		setstatus(status);
 
 		free(status);
 		free(baty);
 		free(ltime);
+		free(ssid);
 	}
 
 	XCloseDisplay(dpy);
