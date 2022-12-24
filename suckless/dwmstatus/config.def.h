@@ -1,5 +1,6 @@
 /* timezone */
 #define TZ "Asia/Jakarta"
+#define TIME_FORMAT "%a, %d/%m %H:%M:%S"
 
 /* File indicating AC is present */
 #define AC_FILE		"/sys/class/power_supply/AC/online"
