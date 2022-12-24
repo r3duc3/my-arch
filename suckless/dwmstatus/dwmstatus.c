@@ -51,7 +51,7 @@ mktimes()
 	time_t tim;
 	struct tm *timtm;
 
-	settz(TZ_NAME);
+	setenv("TZ", TZ_NAME, 1);
 	tim = time(NULL);
 	timtm = localtime(&tim);
 	if (timtm == NULL)
@@ -111,25 +111,25 @@ getbattery()
 	}
 	free(co);
 
-	co = readfile(base, "charge_full");
+	co = readfile(BAT, "charge_full");
 	if (co == NULL) {
-		co = readfile(base, "energy_full");
+		co = readfile(BAT, "energy_full");
 		if (co == NULL)
 			return smprintf("");
 	}
 	sscanf(co, "%d", &descap);
 	free(co);
 
-	co = readfile(base, "charge_now");
+	co = readfile(BAT, "charge_now");
 	if (co == NULL) {
-		co = readfile(base, "energy_now");
+		co = readfile(BAT, "energy_now");
 		if (co == NULL)
 			return smprintf("");
 	}
 	sscanf(co, "%d", &remcap);
 	free(co);
 
-	co = readfile(base, "status");
+	co = readfile(BAT, "status");
 	if (!strncmp(co, "Discharging", 11)) {
 		status = '-';
 	} else if(!strncmp(co, "Charging", 8)) {
