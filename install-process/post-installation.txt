@@ -2,7 +2,7 @@
 https://aur.chaotic.cx/
 
 # update & install repo
-sudo pacman -Syu firefox aria2 yt-dlp pcmanfm
+sudo pacman -Syu firefox aria2 yt-dlp pcmanfm gedit
 
 # window manager
 git://git.suckless.org/dwm
