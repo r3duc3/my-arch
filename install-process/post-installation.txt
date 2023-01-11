@@ -1,3 +1,9 @@
+# update mirror
+https://aur.chaotic.cx/
+
+# update & install repo
+sudo pacman -Syu firefox aria2 yt-dlp
+
 # window manager
 git://git.suckless.org/dwm
 
@@ -13,7 +19,3 @@ otf-font-awesome
 #aur
 https://aur.archlinux.org/ttf-ms-fonts.git
 ksuperkey
-
-# package
-aria2
-yt-dlp
