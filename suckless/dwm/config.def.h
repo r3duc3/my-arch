@@ -29,7 +29,7 @@ static const Rule rules[] = {
 	/* class      		instance    title       tags mask     isfloating   	monitor */
 	{ "st-float",			NULL,				NULL,				0,						1,						-1 },
 	{ "st-256color",	NULL,				NULL,				1 << 0,				0,						-1 },
-	{ "Firefox",			NULL,				NULL,				1 << 1,				0,						-1 },
+	{ "firefox",			NULL,				NULL,				1 << 1,				0,						-1 },
 	{ "Pcmanfm",			NULL,				NULL,				1 << 2,				0,						-1 },
 	{ "code-oss",			NULL,				NULL,				1 << 3,				0,						-1 },
 };
@@ -49,6 +49,7 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
+#define ALTKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
