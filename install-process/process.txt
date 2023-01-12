@@ -16,7 +16,7 @@ mount --mkdir /dev/sdX1 /mnt/boot/efi
 
 # installation
 pacman -Sy archlinux-keyring
-reflector -f 12 -n 12 -l 10 --verbose --save /etc/pacman.d/mirrorlist
+reflector -f 12 -l 10 -p https,ftp --sort rate --verbose --save /etc/pacman.d/mirrorlist
 pacstrap /mnt pacstrap.txt
 
 # configure system
