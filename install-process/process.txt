@@ -56,7 +56,7 @@ vim /etc/default/grub
 # add user
 useradd -m thuser
 passwd thuser
-usermod -aG wheel,audio,video,storage thuser
+usermod -aG wheel,audio,video,storage,power,network thuser
 EDITOR=vim visudo
 
 # enable service
