@@ -15,8 +15,8 @@ mount /dev/sdX2 /mnt
 mount --mkdir /dev/sdX1 /mnt/boot/efi
 
 # installation
-pacman -Sy archlinux-keyring
 reflector -f 12 -l 10 -p https,ftp --sort rate --verbose --save /etc/pacman.d/mirrorlist
+pacman -Syy archlinux-keyring
 pacstrap /mnt pacstrap.txt
 
 # configure system
