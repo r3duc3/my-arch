@@ -64,6 +64,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 
 /* Default apps */
+static const char *clipman[]       = { "xfce4-clipman-history", NULL };
 static const char *termcmd[]       = { "st", NULL };
 static const char *termfloat[]     = { "st", "-c", "st-float", "-n", "st-float", "-g", "85x25+550x300" , NULL };
 static const char *fmcmd[]         = { "pcmanfm", NULL };
@@ -81,16 +82,19 @@ static const char *rofi_launcher[] = { "/usr/share/suckless/dwm/rofi/launcher", 
 static const Key keys[] = {
 	/* modifier                     key        	function        argument */
 	// terminal
-	{ MODKEY,             					XK_Return, 	spawn,          {.v = termcmd } },
+	{ MODKEY,             		XK_Return, 	spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, 	spawn,          {.v = termfloat } },
 
 	// launch apps
-	{ MODKEY|ShiftMask,							XK_f,				spawn,					{.v = fmcmd } },
+	{ MODKEY|ShiftMask,             XK_f,           spawn,		{.v = fmcmd } },
 	{ MODKEY|ShiftMask,							XK_e,				spawn,					{.v = editcmd } },
 	{ MODKEY|ShiftMask,							XK_w,				spawn,					{.v = webcmd } },
 
 	// rofi
 	{ ALTKEY,												XK_F1,			spawn,					{.v = rofi_launcher } },
+
+	// clipboard
+	{ MODKEY,                       XK_v,           spawn,          {.v = clipman } },
 
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
