@@ -1,6 +1,8 @@
 # update mirror
 https://aur.chaotic.cx/
 
+sudo pacman -Syyu aria2 yt-dlp telegram-desktop libreoffice-fresh hunspell android-tools stacer mpv
+
 # window manager
 git://git.suckless.org/dwm
 
