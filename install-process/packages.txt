@@ -1,1 +1,1 @@
-libreoffice-fresh hunspell hunspell-en_US hyphen hyphen-en
+libreoffice-fresh hunspell hunspell-en_US hyphen hyphen-en aria2 yt-dlp telegram-desktop android-tools mpv
