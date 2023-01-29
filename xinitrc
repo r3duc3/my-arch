@@ -22,3 +22,4 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # clipboard manager
 xfce4-clipman &
+test
