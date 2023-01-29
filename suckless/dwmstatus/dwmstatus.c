@@ -144,6 +144,22 @@ getbattery()
 	return smprintf("%.0f%%%c", ((float)remcap / (float)descap) * 100, status);
 }
 
+/* char *
+networkstatus()
+{
+	char *co, *status;
+
+	co = readfile(WLAN, "operstate");
+	if (!strncmp(co, "up", 2)) {
+		status = "connect";
+	} else if (!strncmp(co, "down", 4)) {
+		status = "disconnect";
+	}
+
+	free(co);
+	return smprintf("%s", status);
+} */
+
 char *
 execscript(char *cmd)
 {
@@ -171,7 +187,7 @@ main(void)
 	char *status;
 	char *baty;
 	char *ltime;
-	char *ssid;
+	char *nname;
 
 	if (!(dpy = XOpenDisplay(NULL))) {
 		fprintf(stderr, "dwmstatus: cannot open display.\n");
@@ -181,18 +197,15 @@ main(void)
 	for (;;sleep(1)) {
 		baty = getbattery();
 		ltime = mktimes();
-		ssid = execscript("nmcli -t -f STATE,CONNECTION device status | grep '^connected:' | sed 's/connected\\://'");
-
-		if (strlen(ssid) == 0)
-			ssid = "dc";
-
-		status = smprintf("B:%s W:%s %s", baty, ssid, ltime);
+		nname = execscript("_ssid=$(nmcli -t -f STATE,CONNECTION device status | grep '^connected:' | sed 's/connected\\://');if [ $_ssid ]; then echo \" W:$_ssid\"; else echo ''; fi");
+		
+		status = smprintf("B:%s%s %s", baty, nname, ltime);
 		setstatus(status);
 
 		free(status);
 		free(baty);
 		free(ltime);
-		free(ssid);
+		free(nname);
 	}
 
 	XCloseDisplay(dpy);
