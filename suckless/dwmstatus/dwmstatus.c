@@ -144,22 +144,6 @@ getbattery()
 	return smprintf("%.0f%%%c", ((float)remcap / (float)descap) * 100, status);
 }
 
-/* char *
-networkstatus()
-{
-	char *co, *status;
-
-	co = readfile(WLAN, "operstate");
-	if (!strncmp(co, "up", 2)) {
-		status = "connect";
-	} else if (!strncmp(co, "down", 4)) {
-		status = "disconnect";
-	}
-
-	free(co);
-	return smprintf("%s", status);
-} */
-
 char *
 execscript(char *cmd)
 {
