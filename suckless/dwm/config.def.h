@@ -80,6 +80,7 @@ static const char *rofi_launcher[] = { "/usr/share/suckless/dwm/rofi/launcher", 
 static const char *raisevol[]      = { "/usr/bin/pactl", "set-sink-volume", "0", "+1%", NULL };
 static const char *lowervol[]      = { "/usr/bin/pactl", "set-sink-volume", "0", "-1%", NULL };
 static const char *mutevol[]       = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle", NULL };
+static const char *mutemic[]       = { "/usr/bin/pactl", "set-source-mute", "1", "toggle", NULL };
 
 // brightness
 static const char *light_up[]      = { "/usr/bin/xbacklight", "-inc", "1", NULL };
@@ -89,6 +90,7 @@ static const Key keys[] = {
 	/* modifier                     key        	function        argument */
 	// hardware keys
 	{ 0,                     XF86XK_AudioMute,  spawn,          {.v = mutevol } },
+	{ 0,                  XF86XK_AudioMicMute,  spawn,          {.v = mutemic } },
 	{ 0,              XF86XK_AudioLowerVolume,  spawn,          {.v = lowervol } },
 	{ 0,              XF86XK_AudioRaiseVolume,  spawn,          {.v = raisevol } },
 	{ 0,               XF86XK_MonBrightnessUp,  spawn,          {.v = light_up } },
