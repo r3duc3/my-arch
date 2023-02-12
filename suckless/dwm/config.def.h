@@ -76,11 +76,23 @@ static const char *rofi_launcher[] = { "/usr/share/suckless/dwm/rofi/launcher", 
 
 /* Hardware keys */
 #include <X11/XF86keysym.h>
+// volume command
+static const char *raisevol[]      = { "/usr/bin/pactl", "set-sink-volume", "0", "+1%", NULL };
+static const char *lowervol[]      = { "/usr/bin/pactl", "set-sink-volume", "0", "-1%", NULL };
+static const char *mutevol[]       = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle", NULL };
 
-
+// brightness
+static const char *light_up[]      = { "/usr/bin/xbacklight", "-inc", "1", NULL };
+static const char *light_down[]    = { "/usr/bin/xbacklight", "-dec", "1", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        	function        argument */
+	// hardware keys
+	{ 0,                     XF86XK_AudioMute,  spawn,          {.v = mutevol } },
+	{ 0,              XF86XK_AudioLowerVolume,  spawn,          {.v = lowervol } },
+	{ 0,              XF86XK_AudioRaiseVolume,  spawn,          {.v = raisevol } },
+	{ 0,               XF86XK_MonBrightnessUp,  spawn,          {.v = light_up } },
+	{ 0,             XF86XK_MonBrightnessDown,  spawn,          {.v = light_down } },
 	// terminal
 	{ MODKEY,             		XK_Return, 	spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, 	spawn,          {.v = termfloat } },
