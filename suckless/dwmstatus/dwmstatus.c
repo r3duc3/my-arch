@@ -16,6 +16,7 @@
 #include <sys/wait.h>
 
 #include <X11/Xlib.h>
+#include "getvol.c"
 #include "config.h"
 
 static Display *dpy;
@@ -172,6 +173,7 @@ main(void)
 	char *baty;
 	char *ltime;
 	char *nname;
+	int volume;
 
 	if (!(dpy = XOpenDisplay(NULL))) {
 		fprintf(stderr, "dwmstatus: cannot open display.\n");
@@ -181,9 +183,10 @@ main(void)
 	for (;;sleep(1)) {
 		baty = getbattery();
 		ltime = mktimes();
+		volume = get_vol();
 		nname = execscript("_ssid=$(nmcli -t -f STATE,CONNECTION device status | grep '^connected:' | sed 's/connected\\://');if [ $_ssid ]; then echo \" W:$_ssid\"; else echo ''; fi");
 		
-		status = smprintf("B:%s%s %s", baty, nname, ltime);
+		status = smprintf("B:%s%s V:%i %s", baty, nname, volume, ltime);
 		setstatus(status);
 
 		free(status);

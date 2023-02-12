@@ -2,3 +2,4 @@
 #define TZ_FORMAT "%a, %d/%m %H:%M:%S"
 
 #define BAT "/sys/class/power_supply/BAT1"
+#define WAT "/sys/class/net/wlan0"
