@@ -77,8 +77,8 @@ static const char *rofi_launcher[] = { "/usr/share/suckless/dwm/rofi/launcher", 
 /* Hardware keys */
 #include <X11/XF86keysym.h>
 // volume command
-static const char *raisevol[]      = { "/usr/bin/pactl", "set-sink-volume", "0", "+1%", NULL };
-static const char *lowervol[]      = { "/usr/bin/pactl", "set-sink-volume", "0", "-1%", NULL };
+static const char *raisevol[]      = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
+static const char *lowervol[]      = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL };
 static const char *mutevol[]       = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle", NULL };
 static const char *mutemic[]       = { "/usr/bin/pactl", "set-source-mute", "1", "toggle", NULL };
 
